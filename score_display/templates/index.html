@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block app_content %}
+    <h1>Add gymnast score</h1>
+
+    <form class="form-group" action="" method="POST">
+        {% for active in active_set %}
+        <div class="form-check form-check-inline mb-2 mr-sm-2">
+          <label class="form-check-label">
+            <input name="active_{{ active.level }}" class="form-check-input" type="checkbox" {% if active.is_active %}checked{% endif %}> {{ active.level }}
+          </label>
+        </div>
+        {% endfor %}
+        <div class="form-group">
+              <label for="gymanst_list">Gymnast</label>
+              <select class="form-control" id="gymanst_list" name="gymnast_list">
+              {%for g in gymnasts %}
+                <option>{{ g }}</option>
+              {% endfor %}
+              </select>
+        </div>
+      <div class="form-group">
+        <label for="gymanst_app">Apparatus</label>
+        <select class="form-control" id="gymanst_app" name="gymnast_app">
+          <option>FX</option>
+          <option>Rope</option>
+          <option>Hoop</option>
+          <option>Ball</option>
+          <option>Clubs</option>
+          <option>Ribbon</option>
+        </select>
+    </div>
+        <div class="form-group">
+                <label for="gymnast_score">score</label>
+                <input type="text" class="form-control" id="gymnast_score" name="gymnast_score">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+      </form>
+{% endblock %}
+{% block app_scripts %}
+<script>
+    var gymnasts = JSON.parse('{{ gymnast_detail|safe }}');
+</script>
+{% endblock %}
