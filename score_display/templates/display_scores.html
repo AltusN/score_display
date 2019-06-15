@@ -4,28 +4,28 @@
 {% endblock %}
 {% block app_content %}
     {% for level in active_level %}
-        <h3 class=text-dark>{{ level }}</h3>
+        <h4 class=text-dark>{{ level }}</h3>
         <table class="table table-striped table-sm">
             <tr>
                 <th>Gymnast</th>
                 <th>Club</th>
-                <th>Level</th>
+                <!--th>Level</th>-->
                 {% if "Level" in level %}
                     <th>Age</th>
                 {% endif %}
                 <th>FX</th>
-                <th>Hoop</th>
-                <th>Ball</th>
-                <th>Rope</th>
-                <th>Clubs</th>
-                <th>Ribbon</th>
+                <th><img src="{{ url_for('static',filename='gym_images/Hoop.png') }}"></th>
+                <th><img src="{{ url_for('static',filename='gym_images/Ball.png') }}"></th>
+                <th><img src="{{ url_for('static',filename='gym_images/Rope.png') }}"></th>
+                <th><img src="{{ url_for('static',filename='gym_images/Clubs.png') }}"></th>
+                <th><img src="{{ url_for('static',filename='gym_images/Ribbon.png') }}"></th>
             </tr>
             {% for k,v in gym_dict.items() %}
                 {% if v.level == level %}
                 <tr>
                     <td>{{ v.name }}</td>
                     <td>{{ v.club }}</td>
-                    <td>{{ v.level }}</td>
+                    <!--td>{{ v.level }}</td>-->
                     {% if "Level" in level %}
                         <td>{{ v.age }}</td>
                     {% endif %}
